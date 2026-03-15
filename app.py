@@ -331,4 +331,6 @@ def index():
 if __name__ == "__main__":
     # เปลี่ยน host เป็น '0.0.0.0' เพื่อรับการเชื่อมต่อจากทุก Network Interface
     # เปลี่ยน port เป็น 8888 (หรือพอร์ตอื่นที่สูงๆ เช่น 9999)
-    app.run(debug=True, host='0.0.0.0', port=8888)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
+    # app.run(debug=True, host='0.0.0.0', port=8888)
