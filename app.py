@@ -308,7 +308,7 @@ def index():
                 # ✅ เช็คว่าเจอกล้วยไหม?
                 if not results:
                     # ถ้า results เป็นค่าว่าง (AI หาไม่เจอ)
-                    message = "ไม่พบรูปกล้วยในภาพ (No banana detected)"
+                    message = "ไม่พบรูปกล้วยในภาพ (No banana detected)(Confidence: {{ r.confidence }})"
                 else:
                     # ถ้าเจอ ก็ดึงข้อมูลโภชนาการปกติ
                     main_label = results[0]["label"]
