@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Banana Ripeness</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 
 <body class="theme-yellow">
@@ -18,7 +17,6 @@
   </header>
 
   <main class="container result-grid">
-    <!-- กล่องรูป -->
     <section class="photo-box">
       {% if image_path %}
         <img class="photo-placeholder" src="{{ image_path }}" alt="ภาพกล้วยที่วิเคราะห์แล้ว">
@@ -26,42 +24,6 @@
         <div class="photo-placeholder"></div>
       {% endif %}
     </section>
-
-    <!-- กล่องผลวิเคราะห์ -->
-    <section class="result-box">
-      <h2 class="subhead">Banana ripeness level</h2>
-      <div class="para">
-        {% if results and results|length > 0 %}
-          <ul class="plain-list">
-            {% for r in results %}
-              <li>
-                {% if r.index == 0 %}
-                  {{ r.label }}
-                {% else %}
-                  กล้วย {{ r.index }}: {{ r.label }} (Confidence: {{ r.confidence }})
-                {% endif %}
-              </li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          ไม่มีข้อมูล
-        {% endif %}
-      </div>
-
-      <h2 class="subhead mtop">Nutrition information</h2>
-      <p class="para">
-        {{ nutrition if nutrition else "ไม่มีข้อมูลโภชนาการ" }}
-      </p>
-    </section>
-
-    <!-- ประโยชน์ -->
-    <section class="benefit-box">
-      <h2 class="subhead">Health benefits</h2>
-      <p class="para">
-        {{ benefit if benefit else "ไม่มีข้อมูลประโยชน์ต่อสุขภาพ" }}
-      </p>
-    </section>
-
 
     <section class="result-box">
       <h2 class="subhead">Banana ripeness level</h2>
@@ -76,9 +38,10 @@
               </li>
             {% endfor %}
           </ul>
+        
         {% else %}
-          <div class="alert-warning" style="color: red; font-weight: bold; padding: 10px;">
-            {{ message if message else "ไม่สามารถวิเคราะห์ได้" }}
+          <div class="alert-warning" style="color: red; font-weight: bold; padding: 10px; border: 2px dashed red; border-radius: 8px; text-align: center;">
+            {{ message if message else "ไม่สามารถวิเคราะห์ได้ (No banana detected)" }}
           </div>
         {% endif %}
 
@@ -93,8 +56,8 @@
       {% endif %}
 
     </section>
-        
+
     <a class="home-fab" href="{{ url_for('index') }}" aria-label="กลับหน้าแรก">🏠</a>
   </main>
 </body>
-</html> 
+</html>
