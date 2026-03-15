@@ -177,6 +177,7 @@ try:
 except:
     try:
         model = YOLO("best.pt")
+        model.to('cpu')
         print("Model loaded from best.pt")
     except:
         print("Error: best.pt not found.")
@@ -192,7 +193,7 @@ def detect_banana(image_path):
     output_path = os.path.join("static", "result.jpg")
 
     try:
-        results_list = model.predict(img, conf=0.25, iou=0.45, verbose=False)
+        results_list = model.predict(source=image_path, imgsz=320, conf=0.25, conf=0.25, iou=0.45, verbose=False)
         results = results_list[0]
         labels_info = []
 
