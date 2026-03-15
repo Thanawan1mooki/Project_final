@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['overripe', 'raw', 'ripe', 'rotten', 'unripe']
+
+roboflow:
+  workspace: banana-dpadx
+  project: banana-banana-svcdo
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/banana-dpadx/banana-banana-svcdo/dataset/1
