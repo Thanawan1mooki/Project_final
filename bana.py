@@ -186,7 +186,7 @@ def detect_banana(image_path):
 
     try:
         # ใช้ imgsz=320 เพื่อประหยัด RAM ตอนทำ Prediction
-        results_list = current_model.predict(source=image_path, imgsz=320, conf=0.55, iou=0.45, verbose=False)
+        results_list = current_model.predict(source=image_path, imgsz=320, conf=0.7, iou=0.45, verbose=False)
         results = results_list[0]
         labels_info = []
 
