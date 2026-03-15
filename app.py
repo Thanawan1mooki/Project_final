@@ -123,7 +123,9 @@ from flask import Flask, render_template, request, url_for, redirect
 import os
 # ตรวจสอบให้แน่ใจว่า bana.py อยู่ในไดเรกทอรีเดียวกัน หรืออยู่ใน PYTHONPATH
 # และมีการ import 'model as bana_model' เพื่อเข้าถึงโมเดลที่โหลดใน bana.py
-from bana import detect_banana, model as bana_model 
+# from bana import detect_banana, model as bana_model 
+
+from bana import detect_banana
 
 app = Flask(__name__)
 
@@ -289,8 +291,8 @@ def index():
             try:
                 image.save(upload_path)
 
-                if bana_model is None:
-                     return render_template("index.html", error_message="Model Error")
+                # if bana_model is None:
+                #      return render_template("index.html", error_message="Model Error")
 
                 # ส่งเข้า AI
                 results, output_file_name = detect_banana(upload_path)
